@@ -5,7 +5,9 @@
     "start": "ts-node-dev src/index.ts",
     "build": "tsc",
     "lint": "eslint . --fix",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "codegen": "graphql-codegen",
+    "start:codegen": "graphql-codegen --watch"
   },
   "dependencies": {
     "@apollo/server": "5.0.0",
@@ -13,7 +15,9 @@
     "graphql-scalars": "1.24.2"
   },
   "devDependencies": {
-    "@graphql-tools/utils": "10.9.1",
+    "@eddeee888/gcg-typescript-resolver-files": "0.12.1",
+    "@graphql-codegen/cli": "5.0.7",
+    "@parcel/watcher": "2.5.1",
     "@types/node": "24.3.0",
     "@typescript-eslint/eslint-plugin": "8.39.1",
     "@typescript-eslint/parser": "8.39.1",
