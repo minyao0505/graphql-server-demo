@@ -1,12 +1,12 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { data } from "./data";
-import { resolvers } from "./schema/resolvers";
-import { typeDefs } from "./schema/typeDefs";
+import { resolvers } from "./schema/resolvers.generated";
+import { typeDefs } from "./schema/typeDefs.generated";
 
-export type ResolverContext = {
+interface ResolverContext {
   data: typeof data;
-};
+}
 
 const startServer = async () => {
   const server = new ApolloServer<ResolverContext>({
