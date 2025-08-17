@@ -2,8 +2,17 @@ extend type Query {
   user(id: ID!): User
 }
 
+extend type Mutation {
+  createUser(input: CreateUserInput!): User!
+}
+
 type User {
   id: ID!
+  name: String!
+  contact: String!
+}
+
+input CreateUserInput {
   name: String!
   contact: String!
 }

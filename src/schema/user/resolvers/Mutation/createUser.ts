@@ -1,4 +1,4 @@
-import type { MutationResolvers } from "../../../types";
+import type { MutationResolvers, User } from "./../../../types.generated";
 
 export const createUser: NonNullable<MutationResolvers["createUser"]> = async (
   _parent,
