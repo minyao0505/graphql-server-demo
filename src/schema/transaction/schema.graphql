@@ -1,0 +1,20 @@
+extend type Mutation {
+  createTransaction(input: CreateTransactionInput!): Transaction!
+}
+
+type Transaction {
+  id: ID!
+  productId: ID!
+  buyerId: ID!
+}
+
+input CreateTransactionInput {
+  productId: ID!
+  buyerId: ID!
+}
+
+extend type Transaction {
+  product: Product
+  buyer: User
+  seller: User
+}
