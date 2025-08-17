@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
+      - name: Codegen & check
+        run: pnpm codegen
+
       - name: Lint
         run: pnpm lint
 
