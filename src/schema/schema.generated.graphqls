@@ -1,0 +1,58 @@
+input CreateProductInput {
+  description: String
+  name: String!
+  price: Float!
+  sellerId: ID!
+}
+
+input CreateTransactionInput {
+  buyerId: ID!
+  productId: ID!
+}
+
+type GetProductsResponse {
+  result: [Product!]
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): Product!
+  createTransaction(input: CreateTransactionInput!): Transaction!
+}
+
+type Product {
+  buyer: User
+  description: String
+  id: ID!
+  name: String!
+  price: Float!
+  seller: User
+  sellerId: ID!
+}
+
+enum ProductStatus {
+  AVAILABLE
+  SOLD
+}
+
+type Query {
+  getProduct(id: ID!): Product!
+  getProducts(status: ProductStatus): GetProductsResponse
+  user(id: ID!): User
+}
+
+type Transaction {
+  buyer: User
+  buyerId: ID!
+  id: ID!
+  product: Product
+  productId: ID!
+  seller: User
+}
+
+type User {
+  contact: String!
+  id: ID!
+  name: String!
+  productPurchased: [Product!]
+  productSold: [Product!]
+}
