@@ -182,13 +182,6 @@ export const typeDefs = {
         },
         {
           kind: "FieldDefinition",
-          name: { kind: "Name", value: "description" },
-          arguments: [],
-          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
-          directives: [],
-        },
-        {
-          kind: "FieldDefinition",
           name: { kind: "Name", value: "price" },
           arguments: [],
           type: {
@@ -264,12 +257,6 @@ export const typeDefs = {
               name: { kind: "Name", value: "String" },
             },
           },
-          directives: [],
-        },
-        {
-          kind: "InputValueDefinition",
-          name: { kind: "Name", value: "description" },
-          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
           directives: [],
         },
         {

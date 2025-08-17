@@ -6,7 +6,8 @@ export const getProducts: NonNullable<QueryResolvers["getProducts"]> = async (
   { data },
 ) => {
   /* Implement Query.getAllProducts resolver logic here */
-  const result: Product[] = await data.$products.getAll({ status });
+  const params = status ? { status } : {};
+  const result: Product[] | null = await data.$products.getAll(params);
 
   if (!result) {
     throw new Error("No products available");

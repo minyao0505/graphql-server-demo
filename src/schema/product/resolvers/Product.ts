@@ -3,7 +3,9 @@ import type { ProductResolvers, User } from "./../../types.generated";
 export const Product: ProductResolvers = {
   seller: async (parent, __, { data }) => {
     // Use parent.sellerId and fetch seller by ID
-    const seller: User = await data.$users.findById({ id: parent.sellerId });
+    const seller: User | null = await data.$users.findById({
+      id: String(parent.sellerId),
+    });
 
     if (!seller) {
       throw new Error(`Seller not found for product with id: ${parent.id}`);
@@ -12,7 +14,9 @@ export const Product: ProductResolvers = {
     return seller;
   },
   buyer: async (parent, __, { data }) => {
-    const transaction = await data.$transactions.findById({ id: parent.id });
+    const transaction = await data.$transactions.findById({
+      id: String(parent.id),
+    });
 
     if (!transaction) {
       return null; // Product hasn't been sold yet

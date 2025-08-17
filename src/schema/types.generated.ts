@@ -1,4 +1,5 @@
 import { GraphQLResolveInfo } from "graphql";
+import { ResolverContext } from "../index";
 export type Maybe<T> = T | null | undefined;
 export type InputMaybe<T> = T | null | undefined;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -35,7 +36,6 @@ export type Scalars = {
 };
 
 export type CreateProductInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>;
   name: Scalars["String"]["input"];
   price: Scalars["Float"]["input"];
   sellerId: Scalars["ID"]["input"];
@@ -68,7 +68,6 @@ export type MutationcreateTransactionArgs = {
 export type Product = {
   __typename?: "Product";
   buyer?: Maybe<User>;
-  description?: Maybe<Scalars["String"]["output"]>;
   id: Scalars["ID"]["output"];
   name: Scalars["String"]["output"];
   price: Scalars["Float"]["output"];
@@ -255,7 +254,7 @@ export type ResolversParentTypes = {
 };
 
 export type GetProductsResponseResolvers<
-  ContextType = any,
+  ContextType = ResolverContext,
   ParentType extends
     ResolversParentTypes["GetProductsResponse"] = ResolversParentTypes["GetProductsResponse"],
 > = {
@@ -268,7 +267,7 @@ export type GetProductsResponseResolvers<
 };
 
 export type MutationResolvers<
-  ContextType = any,
+  ContextType = ResolverContext,
   ParentType extends
     ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"],
 > = {
@@ -287,16 +286,11 @@ export type MutationResolvers<
 };
 
 export type ProductResolvers<
-  ContextType = any,
+  ContextType = ResolverContext,
   ParentType extends
     ResolversParentTypes["Product"] = ResolversParentTypes["Product"],
 > = {
   buyer?: Resolver<Maybe<ResolversTypes["User"]>, ParentType, ContextType>;
-  description?: Resolver<
-    Maybe<ResolversTypes["String"]>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
   name?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   price?: Resolver<ResolversTypes["Float"], ParentType, ContextType>;
@@ -311,7 +305,7 @@ export type ProductStatusResolvers = EnumResolverSignature<
 >;
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = ResolverContext,
   ParentType extends
     ResolversParentTypes["Query"] = ResolversParentTypes["Query"],
 > = {
@@ -336,7 +330,7 @@ export type QueryResolvers<
 };
 
 export type TransactionResolvers<
-  ContextType = any,
+  ContextType = ResolverContext,
   ParentType extends
     ResolversParentTypes["Transaction"] = ResolversParentTypes["Transaction"],
 > = {
@@ -350,7 +344,7 @@ export type TransactionResolvers<
 };
 
 export type UserResolvers<
-  ContextType = any,
+  ContextType = ResolverContext,
   ParentType extends
     ResolversParentTypes["User"] = ResolversParentTypes["User"],
 > = {
@@ -370,7 +364,7 @@ export type UserResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = ResolverContext> = {
   GetProductsResponse?: GetProductsResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Product?: ProductResolvers<ContextType>;

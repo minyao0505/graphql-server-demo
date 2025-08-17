@@ -7,8 +7,8 @@ import type {
 export const Transaction: TransactionResolvers = {
   /* Implement Transaction resolver logic here */
   product: async (parent, __, { data }) => {
-    const product: Product = await data.$products.findById({
-      id: parent.productId,
+    const product: Product | null = await data.$products.findById({
+      id: String(parent.productId),
     });
 
     if (!product) {
@@ -18,8 +18,8 @@ export const Transaction: TransactionResolvers = {
     return product;
   },
   buyer: async (parent, __, { data }) => {
-    const buyer: User = await data.$users.findById({
-      id: parent.buyerId,
+    const buyer: User | null = await data.$users.findById({
+      id: String(parent.buyerId),
     });
 
     if (!buyer) {
@@ -29,7 +29,9 @@ export const Transaction: TransactionResolvers = {
     return buyer;
   },
   seller: async (parent, __, { data }) => {
-    const product = await data.$products.findById({ id: parent.productId });
+    const product = await data.$products.findById({
+      id: String(parent.productId),
+    });
 
     if (!product) {
       return null;
