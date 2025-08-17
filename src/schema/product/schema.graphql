@@ -1,0 +1,37 @@
+extend type Query {
+  getProduct(id: ID!): Product!
+  getProducts(status: ProductStatus): GetProductsResponse
+}
+
+extend type Mutation {
+  createProduct(input: CreateProductInput!): Product!
+}
+
+enum ProductStatus {
+  SOLD
+  AVAILABLE
+}
+
+type Product {
+  id: ID!
+  name: String!
+  description: String
+  price: Float!
+  sellerId: ID!
+}
+
+type GetProductsResponse {
+  result: [Product!]
+}
+
+input CreateProductInput {
+  name: String!
+  description: String
+  price: Float!
+  sellerId: ID!
+}
+
+extend type Product {
+  seller: User
+  buyer: User
+}
