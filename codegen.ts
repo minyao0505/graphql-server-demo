@@ -7,7 +7,12 @@ const config: CodegenConfig = {
     afterAllFileWrite: ["prettier --write"],
   },
   generates: {
-    "src/schema": defineConfig(),
+    "src/schema": defineConfig({
+      resolverGeneration: "minimal",
+      typesPluginsConfig: {
+        contextType: "../index#ResolverContext",
+      },
+    }),
   },
 };
 

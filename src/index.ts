@@ -4,9 +4,9 @@ import { data } from "./data";
 import { resolvers } from "./schema/resolvers.generated";
 import { typeDefs } from "./schema/typeDefs.generated";
 
-interface ResolverContext {
+export type ResolverContext = {
   data: typeof data;
-}
+};
 
 const startServer = async () => {
   const server = new ApolloServer<ResolverContext>({

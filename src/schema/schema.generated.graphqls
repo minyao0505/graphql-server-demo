@@ -1,5 +1,4 @@
 input CreateProductInput {
-  description: String
   name: String!
   price: Float!
   sellerId: ID!
@@ -21,7 +20,6 @@ type Mutation {
 
 type Product {
   buyer: User
-  description: String
   id: ID!
   name: String!
   price: Float!
