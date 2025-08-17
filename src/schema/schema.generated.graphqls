@@ -9,6 +9,11 @@ input CreateTransactionInput {
   productId: ID!
 }
 
+input CreateUserInput {
+  contact: String!
+  name: String!
+}
+
 type GetProductsResponse {
   result: [Product!]
 }
@@ -16,6 +21,7 @@ type GetProductsResponse {
 type Mutation {
   createProduct(input: CreateProductInput!): Product!
   createTransaction(input: CreateTransactionInput!): Transaction!
+  createUser(input: CreateUserInput!): User!
 }
 
 type Product {

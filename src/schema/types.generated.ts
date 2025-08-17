@@ -46,6 +46,11 @@ export type CreateTransactionInput = {
   productId: Scalars["ID"]["input"];
 };
 
+export type CreateUserInput = {
+  contact: Scalars["String"]["input"];
+  name: Scalars["String"]["input"];
+};
+
 export type GetProductsResponse = {
   __typename?: "GetProductsResponse";
   result?: Maybe<Array<Product>>;
@@ -55,6 +60,7 @@ export type Mutation = {
   __typename?: "Mutation";
   createProduct: Product;
   createTransaction: Transaction;
+  createUser: User;
 };
 
 export type MutationcreateProductArgs = {
@@ -63,6 +69,10 @@ export type MutationcreateProductArgs = {
 
 export type MutationcreateTransactionArgs = {
   input: CreateTransactionInput;
+};
+
+export type MutationcreateUserArgs = {
+  input: CreateUserInput;
 };
 
 export type Product = {
@@ -227,6 +237,7 @@ export type ResolversTypes = {
   Float: ResolverTypeWrapper<Scalars["Float"]["output"]>;
   ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
   CreateTransactionInput: CreateTransactionInput;
+  CreateUserInput: CreateUserInput;
   GetProductsResponse: ResolverTypeWrapper<GetProductsResponse>;
   Mutation: ResolverTypeWrapper<{}>;
   Product: ResolverTypeWrapper<Product>;
@@ -244,6 +255,7 @@ export type ResolversParentTypes = {
   Float: Scalars["Float"]["output"];
   ID: Scalars["ID"]["output"];
   CreateTransactionInput: CreateTransactionInput;
+  CreateUserInput: CreateUserInput;
   GetProductsResponse: GetProductsResponse;
   Mutation: {};
   Product: Product;
@@ -282,6 +294,12 @@ export type MutationResolvers<
     ParentType,
     ContextType,
     RequireFields<MutationcreateTransactionArgs, "input">
+  >;
+  createUser?: Resolver<
+    ResolversTypes["User"],
+    ParentType,
+    ContextType,
+    RequireFields<MutationcreateUserArgs, "input">
   >;
 };
 
