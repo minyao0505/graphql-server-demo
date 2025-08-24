@@ -2,16 +2,9 @@ import type { QueryResolvers } from "../../../types";
 
 export const getProducts: NonNullable<QueryResolvers["getProducts"]> = async (
   _parent,
-  { status },
-  { data },
+  _agrs,
+  _context,
 ) => {
-  /* Implement Query.getAllProducts resolver logic here */
-  const params = status ? { status } : {};
-  const result = await data.$products.getAll(params);
-
-  if (!result) {
-    throw new Error("No products available");
-  }
-
-  return result;
+  // Exercise 2
+  return [{ id: "random", name: "random", price: 0, sellerId: "randoms" }];
 };

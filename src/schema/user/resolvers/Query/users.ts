@@ -3,9 +3,8 @@ import type { QueryResolvers } from "../../../types";
 export const users: NonNullable<QueryResolvers["users"]> = async (
   _parent,
   _agrs,
-  { data },
+  _context,
 ) => {
-  const result = await data.$users.getAll();
-
-  return result;
+  // Demo
+  return [{ id: "random", name: "random", contact: "random" }];
 };

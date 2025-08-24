@@ -1,10 +1,11 @@
 scalar Date
 
 ### User ###
+
+# Demo 1 - user
 type User {
-  id: ID!
-  name: String!
-  contact: String!
+  random: String!
+  # TODO - Exercise 1 - Add a contact field for the user
 }
 
 extend type User {
@@ -18,45 +19,39 @@ enum ProductStatus {
   RESERVED
 }
 
+# TODO - Exercise 2 - create a product type
+# TODO - Exercise 4 - add seller and buyer field
 type Product {
-  id: ID!
-  name: String!
-  price: Float!
-  seller: User!
-  datePosted: Date!
-  buyer: User
+  random: String!
 }
 
+# TODO - Exercise 3 - create a mutation for creating new product
 input CreateProductInput {
-  name: String!
-  price: Float!
-  sellerId: ID!
+  random: String!
 }
 
 ### Transaction ###
+# Demo 2 - Transaction
+# Demo 3 - seller
 type Transaction {
-  id: ID!
-  product: Product!
-  buyer: User!
-  seller: User
+  random: ID!
 }
 
-input CreateTransactionInput {
-  productId: ID!
-  buyerId: ID!
-}
+# Demo 2 - createTransactionInput
 
 ### Query ###
 type Query {
-  user(id: ID!): User
-  users: [User!]
-  getProduct(id: ID!): Product
-  getProducts(status: ProductStatus): [Product!]
+  user(id: ID!): User!
+  # Demo 1: users
+  # TODO: Exercise 1: create a users query that return a list of users
+  # TODO: Exercise 2: create a getProducts query that return a list of products
+  # TODO: Extra exercise - create a getProduct query that take id as argument and return the product
   getTransactions: [Transaction!]
 }
 
 ### Mutation ###
 type Mutation {
-  createProduct(input: CreateProductInput!): Product!
-  createTransaction(input: CreateTransactionInput!): Transaction!
+  # TODO - Exercise 3 - create a createProduct mutation that return the created product
+  # Demo 2 - createTransaction
+  createTransaction: Transaction!
 }

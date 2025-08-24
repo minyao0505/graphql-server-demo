@@ -2,15 +2,10 @@ import type { QueryResolvers } from "../../../types";
 
 export const getProduct: NonNullable<QueryResolvers["getProduct"]> = async (
   _parent,
-  { id },
-  { data },
+  _agrs,
+  _context,
 ) => {
-  /* Implement Query.getProduct resolver logic here */
-  const result = await data.$products.findById({ id });
+  // Extra exercise
 
-  if (!result) {
-    throw new Error(`Product not found for product with id: ${id}`);
-  }
-
-  return result;
+  return { id: "random", name: "random", price: 0, sellerId: "randoms" };
 };
