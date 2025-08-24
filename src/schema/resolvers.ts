@@ -1,13 +1,13 @@
-import { createProduct } from "./product/Mutation/createProduct";
-import { Product } from "./product/Product";
-import { getProduct } from "./product/Query/getProduct";
-import { getProducts } from "./product/Query/getProducts";
-import { createTransaction } from "./transaction/Mutation/createTransaction";
-import { Transaction } from "./transaction/Transaction";
-import { createUser } from "./user/Mutation/createUser";
-import { user } from "./user/Query/user";
-import { users } from "./user/Query/users";
-import { User } from "./user/User";
+import { createProduct } from "./product/resolvers/Mutation/createProduct";
+import { Product } from "./product/resolvers/Product";
+import { getProduct } from "./product/resolvers/Query/getProduct";
+import { getProducts } from "./product/resolvers/Query/getProducts";
+import { createTransaction } from "./transaction/resolvers/Mutation/createTransaction";
+import { Transaction } from "./transaction/resolvers/Transaction";
+import { createUser } from "./user/resolvers/Mutation/createUser";
+import { user } from "./user/resolvers/Query/user";
+import { users } from "./user/resolvers/Query/users";
+import { User } from "./user/resolvers/User";
 import type { Resolvers } from "./types";
 
 export const resolvers: Resolvers = {
