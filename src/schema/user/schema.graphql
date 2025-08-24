@@ -1,5 +1,6 @@
 extend type Query {
   user(id: ID!): User
+  users: UsersResponse
 }
 
 extend type Mutation {
@@ -15,6 +16,10 @@ type User {
 input CreateUserInput {
   name: String!
   contact: String!
+}
+
+type UsersResponse {
+  result: [User!]
 }
 
 extend type User {

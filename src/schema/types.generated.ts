@@ -95,6 +95,7 @@ export type Query = {
   getProduct: Product;
   getProducts?: Maybe<GetProductsResponse>;
   user?: Maybe<User>;
+  users?: Maybe<UsersResponse>;
 };
 
 export type QuerygetProductArgs = {
@@ -124,6 +125,11 @@ export type User = {
   name: Scalars["String"]["output"];
   productPurchased?: Maybe<Array<Product>>;
   productSold?: Maybe<Array<Product>>;
+};
+
+export type UsersResponse = {
+  __typename?: "UsersResponse";
+  result?: Maybe<Array<User>>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -250,6 +256,11 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   Transaction: ResolverTypeWrapper<TransactionMapper>;
   User: ResolverTypeWrapper<UserMapper>;
+  UsersResponse: ResolverTypeWrapper<
+    Omit<UsersResponse, "result"> & {
+      result?: Maybe<Array<ResolversTypes["User"]>>;
+    }
+  >;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
 };
 
@@ -269,6 +280,9 @@ export type ResolversParentTypes = {
   Query: {};
   Transaction: TransactionMapper;
   User: UserMapper;
+  UsersResponse: Omit<UsersResponse, "result"> & {
+    result?: Maybe<Array<ResolversParentTypes["User"]>>;
+  };
   Boolean: Scalars["Boolean"]["output"];
 };
 
@@ -351,6 +365,11 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryuserArgs, "id">
   >;
+  users?: Resolver<
+    Maybe<ResolversTypes["UsersResponse"]>,
+    ParentType,
+    ContextType
+  >;
 };
 
 export type TransactionResolvers<
@@ -386,6 +405,19 @@ export type UserResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type UsersResponseResolvers<
+  ContextType = ResolverContext,
+  ParentType extends
+    ResolversParentTypes["UsersResponse"] = ResolversParentTypes["UsersResponse"],
+> = {
+  result?: Resolver<
+    Maybe<Array<ResolversTypes["User"]>>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = ResolverContext> = {
   GetProductsResponse?: GetProductsResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
@@ -394,4 +426,5 @@ export type Resolvers<ContextType = ResolverContext> = {
   Query?: QueryResolvers<ContextType>;
   Transaction?: TransactionResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
+  UsersResponse?: UsersResponseResolvers<ContextType>;
 };
