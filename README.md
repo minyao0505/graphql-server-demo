@@ -131,6 +131,12 @@ src/
 │   └── transaction/     # Transaction-related schema and resolvers
 ```
 
+## Development Scripts
+
+- `pnpm start` - Start the development server with codegen
+- `pnpm codegen` - Generate GraphQL codegen types
+- `pnpm start:codegen` - Watch for changes and re-generate types
+
 ## Contributing
 
 This is a demo project, but feel free to:
