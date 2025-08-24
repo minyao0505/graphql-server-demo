@@ -134,9 +134,9 @@ git checkout main
 
 For an example of GraphQL code generation workflows and automated type generation, check out the **`codegen`** branch:
 
-  ```bash
-  git checkout codegen
-  ```
+```bash
+git checkout codegen
+```
 
 The `codegen` branch demonstrates:
 
