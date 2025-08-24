@@ -5,7 +5,7 @@ export const createProduct: NonNullable<MutationResolvers["createProduct"]> = as
   _agrs,
   _context,
 ) => {
-  // Exercise 3
+  // TODO - Exercise 3 - create a resolver for create a new product
 
   return { id: "random", name: "random", price: 0, sellerId: "randoms" };
 };
