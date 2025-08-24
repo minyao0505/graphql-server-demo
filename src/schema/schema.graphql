@@ -1,17 +1,15 @@
 ### User ###
+
+# Demo
 type User {
   id: ID!
   name: String!
-  contact: String!
+  # Exercise 1
 }
 
-type GetUsersResponse {
-  result: [User!]
-}
-
+# Demo
 input CreateUserInput {
-  name: String!
-  contact: String!
+ 
 }
 
 extend type User {
@@ -25,22 +23,14 @@ enum ProductStatus {
   AVAILABLE
 }
 
+# Exercise 2
 type Product {
-  id: ID!
-  name: String!
-  price: Float!
-  seller: User!
-  buyer: User
+
 }
 
-type GetProductsResponse {
-  result: [Product!]
-}
-
+# Exercise 3
 input CreateProductInput {
-  name: String!
-  price: Float!
-  sellerId: ID!
+
 }
 
 ### Transaction ###
@@ -59,14 +49,14 @@ input CreateTransactionInput {
 ### Query ###
 type Query {
   user(id: ID!): User
-  users: GetUsersResponse
-  getProduct(id: ID!): Product!
-  getProducts(status: ProductStatus): GetProductsResponse
+  # Demo: users
+  # Exercise 2: getProducts
+  # Extra exercise: getProduct
 }
 
 ### Mutation ###
 type Mutation {
-  createUser(input: CreateUserInput!): User!
-  createProduct(input: CreateProductInput!): Product!
-  createTransaction(input: CreateTransactionInput!): Transaction!
+  # Demo: createUser
+  # Exercise 3: createProduct
+    createTransaction(input: CreateTransactionInput!): Transaction!
 }
