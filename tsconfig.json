@@ -27,6 +27,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "src/schema/product/Mutation"],
   "exclude": ["node_modules", "./dist"]
 }
