@@ -1,4 +1,4 @@
-import type { TransactionResolvers } from "../../types";
+import type { TransactionResolvers } from "./../../types.generated";
 
 export const Transaction: TransactionResolvers = {
   /* Implement Transaction resolver logic here */

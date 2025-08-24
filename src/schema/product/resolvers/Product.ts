@@ -1,4 +1,4 @@
-import type { ProductResolvers } from "../../types";
+import type { ProductResolvers } from "./../../types.generated";
 
 export const Product: ProductResolvers = {
   seller: async (parent, __, { data }) => {
