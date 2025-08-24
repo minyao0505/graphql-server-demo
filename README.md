@@ -113,9 +113,9 @@ This repository includes a hands-on learning session designed to help you practi
 
 1. **Switch to the learning branch:**
 
-  ```bash
-  git checkout learn-01
-  ```
+```bash
+git checkout learn-01
+```
 
 2. **Follow the exercises:**
    The `learn-01` branch contains incomplete schema files and resolver implementations with TODO comments and exercises for you to complete.
@@ -123,9 +123,9 @@ This repository includes a hands-on learning session designed to help you practi
 3. **Check your work:**
    When you're ready to see the solutions or if you get stuck, switch to the `main` branch:
 
-  ```bash
-  git checkout main
-  ```
+```bash
+git checkout main
+```
 
 #### 💡 Learning Tips
 
@@ -142,14 +142,13 @@ This repository includes a hands-on learning session designed to help you practi
 
 **Ready to learn?** Switch to the `learn-01` branch and start coding!
 
-
 ## Code Generation
 
 For an example of GraphQL code generation workflows and automated type generation, check out the **`codegen`** branch:
 
-  ```bash
-  git checkout codegen
-  ```
+```bash
+git checkout codegen
+```
 
 The `codegen` branch demonstrates:
 

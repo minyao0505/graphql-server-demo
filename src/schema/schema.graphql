@@ -8,9 +8,7 @@ type User {
 }
 
 # Demo
-input CreateUserInput {
- 
-}
+input CreateUserInput {}
 
 extend type User {
   productSold: [Product!]
@@ -25,14 +23,10 @@ enum ProductStatus {
 
 # TODO - Exercise 2 - create a product type that consists of id, name, price
 # TODO - Exercise 4 - add a buyer field
-type Product {
-
-}
+type Product {}
 
 # TODO - Exercise 3 - create a mutation for creating new product
-input CreateProductInput {
-
-}
+input CreateProductInput {}
 
 ### Transaction ###
 type Transaction {
