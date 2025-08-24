@@ -103,13 +103,53 @@ mutation {
 - `pnpm lint` - Run ESLint with auto-fix
 - `pnpm format` - Format code with Prettier
 
+## Learning
+
+This repository includes a hands-on learning session designed to help you practice GraphQL concepts through exercises.
+
+### Learning Session: GraphQL Schema Design & Implementation
+
+#### 📚 How to Start the Learning Session
+
+1. **Switch to the learning branch:**
+
+  ```bash
+  git checkout learn-01
+  ```
+
+2. **Follow the exercises:**
+   The `learn-01` branch contains incomplete schema files and resolver implementations with TODO comments and exercises for you to complete.
+
+3. **Check your work:**
+   When you're ready to see the solutions or if you get stuck, switch to the `main` branch:
+
+  ```bash
+  git checkout main
+  ```
+
+#### 💡 Learning Tips
+
+- Start the server (`pnpm start`) and use Apollo Studio to test your queries
+- Don't peek at the answers in `main` until you've tried the exercises!
+
+#### 🔄 Learning Flow
+
+1. `git checkout learn-01` - Start with exercises
+2. Complete the TODOs and fix the issues
+3. Test your implementation with the GraphQL playground
+4. `git checkout main` - Compare with the complete solution
+5. `git checkout learn-01` - Continue with more exercises
+
+**Ready to learn?** Switch to the `learn-01` branch and start coding!
+
+
 ## Code Generation
 
 For an example of GraphQL code generation workflows and automated type generation, check out the **`codegen`** branch:
 
-```bash
-git checkout codegen
-```
+  ```bash
+  git checkout codegen
+  ```
 
 The `codegen` branch demonstrates:
 

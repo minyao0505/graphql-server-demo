@@ -4,7 +4,7 @@
 type User {
   id: ID!
   name: String!
-  # Exercise 1
+  # TODO - Exercise 1 - Add a contact field for the user
 }
 
 # Demo
@@ -23,12 +23,13 @@ enum ProductStatus {
   AVAILABLE
 }
 
-# Exercise 2
+# TODO - Exercise 2 - create a product type that consists of id, name, price
+# TODO - Exercise 4 - add a buyer field
 type Product {
 
 }
 
-# Exercise 3
+# TODO - Exercise 3 - create a mutation for creating new product
 input CreateProductInput {
 
 }
@@ -50,13 +51,13 @@ input CreateTransactionInput {
 type Query {
   user(id: ID!): User
   # Demo: users
-  # Exercise 2: getProducts
-  # Extra exercise: getProduct
+  # TODO: Exercise 2: create a getProducts query that return a list of products
+  # TODO: Extra exercise - create a getProduct query that take id as argument and return the product
 }
 
 ### Mutation ###
 type Mutation {
   # Demo: createUser
-  # Exercise 3: createProduct
+  # TODO - Exercise 3 - create a createProduct mutation that return the created product
     createTransaction(input: CreateTransactionInput!): Transaction!
 }

@@ -6,7 +6,7 @@ export const Product: ProductResolvers = {
     return { id: "random", name: "random", contact: "random" };
   },
   buyer: async () => {
-    // Exercise 4
+    // TODO - Exercise 4 - create a buyer resolver that return the user info of the buyer of the product
     return { id: "random", name: "random", contact: "random" };
   },
 };
