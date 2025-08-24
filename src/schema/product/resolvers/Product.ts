@@ -1,9 +1,8 @@
-import type { ProductResolvers, User } from "./../../types.generated";
+import type { ProductResolvers } from "./../../types.generated";
 
 export const Product: ProductResolvers = {
   seller: async (parent, __, { data }) => {
-    // Use parent.sellerId and fetch seller by ID
-    const seller: User | null = await data.$users.findById({
+    const seller = await data.$users.findById({
       id: String(parent.sellerId),
     });
 

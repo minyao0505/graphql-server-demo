@@ -4,17 +4,12 @@ extend type Mutation {
 
 type Transaction {
   id: ID!
-  productId: ID!
-  buyerId: ID!
+  product: Product!
+  buyer: User!
+  seller: User
 }
 
 input CreateTransactionInput {
   productId: ID!
   buyerId: ID!
-}
-
-extend type Transaction {
-  product: Product
-  buyer: User
-  seller: User
 }

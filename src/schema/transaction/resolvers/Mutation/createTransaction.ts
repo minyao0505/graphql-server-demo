@@ -1,14 +1,10 @@
-import type {
-  MutationResolvers,
-  Product,
-  User,
-} from "./../../../types.generated";
+import type { MutationResolvers } from "./../../../types.generated";
 
 export const createTransaction: NonNullable<
   MutationResolvers["createTransaction"]
 > = async (_parent, { input }, { data }) => {
   /* Implement Mutation.createTransaction resolver logic here */
-  const validUser: User | null = await data.$users.findById({
+  const validUser = await data.$users.findById({
     id: input.buyerId,
   });
 
@@ -16,7 +12,7 @@ export const createTransaction: NonNullable<
     throw new Error("Seller does not exist");
   }
 
-  const validProduct: Product | null = await data.$products.findById({
+  const validProduct = await data.$products.findById({
     id: input.productId,
   });
 

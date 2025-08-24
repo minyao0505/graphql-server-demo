@@ -1,4 +1,7 @@
 import { GraphQLResolveInfo } from "graphql";
+import { ProductMapper } from "./product/schema.mappers";
+import { TransactionMapper } from "./transaction/schema.mappers";
+import { UserMapper } from "./user/schema.mappers";
 import { ResolverContext } from "../index";
 export type Maybe<T> = T | null | undefined;
 export type InputMaybe<T> = T | null | undefined;
@@ -20,6 +23,7 @@ export type Incremental<T> =
   | {
       [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
     };
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
   [P in K]-?: NonNullable<T[P]>;
 };
@@ -81,8 +85,7 @@ export type Product = {
   id: Scalars["ID"]["output"];
   name: Scalars["String"]["output"];
   price: Scalars["Float"]["output"];
-  seller?: Maybe<User>;
-  sellerId: Scalars["ID"]["output"];
+  seller: User;
 };
 
 export type ProductStatus = "AVAILABLE" | "SOLD";
@@ -108,11 +111,9 @@ export type QueryuserArgs = {
 
 export type Transaction = {
   __typename?: "Transaction";
-  buyer?: Maybe<User>;
-  buyerId: Scalars["ID"]["output"];
+  buyer: User;
   id: Scalars["ID"]["output"];
-  product?: Maybe<Product>;
-  productId: Scalars["ID"]["output"];
+  product: Product;
   seller?: Maybe<User>;
 };
 
@@ -238,13 +239,17 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
   CreateTransactionInput: CreateTransactionInput;
   CreateUserInput: CreateUserInput;
-  GetProductsResponse: ResolverTypeWrapper<GetProductsResponse>;
+  GetProductsResponse: ResolverTypeWrapper<
+    Omit<GetProductsResponse, "result"> & {
+      result?: Maybe<Array<ResolversTypes["Product"]>>;
+    }
+  >;
   Mutation: ResolverTypeWrapper<{}>;
-  Product: ResolverTypeWrapper<Product>;
+  Product: ResolverTypeWrapper<ProductMapper>;
   ProductStatus: ResolverTypeWrapper<"SOLD" | "AVAILABLE">;
   Query: ResolverTypeWrapper<{}>;
-  Transaction: ResolverTypeWrapper<Transaction>;
-  User: ResolverTypeWrapper<User>;
+  Transaction: ResolverTypeWrapper<TransactionMapper>;
+  User: ResolverTypeWrapper<UserMapper>;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
 };
 
@@ -256,12 +261,14 @@ export type ResolversParentTypes = {
   ID: Scalars["ID"]["output"];
   CreateTransactionInput: CreateTransactionInput;
   CreateUserInput: CreateUserInput;
-  GetProductsResponse: GetProductsResponse;
+  GetProductsResponse: Omit<GetProductsResponse, "result"> & {
+    result?: Maybe<Array<ResolversParentTypes["Product"]>>;
+  };
   Mutation: {};
-  Product: Product;
+  Product: ProductMapper;
   Query: {};
-  Transaction: Transaction;
-  User: User;
+  Transaction: TransactionMapper;
+  User: UserMapper;
   Boolean: Scalars["Boolean"]["output"];
 };
 
@@ -312,8 +319,7 @@ export type ProductResolvers<
   id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
   name?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   price?: Resolver<ResolversTypes["Float"], ParentType, ContextType>;
-  seller?: Resolver<Maybe<ResolversTypes["User"]>, ParentType, ContextType>;
-  sellerId?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
+  seller?: Resolver<ResolversTypes["User"], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -352,11 +358,9 @@ export type TransactionResolvers<
   ParentType extends
     ResolversParentTypes["Transaction"] = ResolversParentTypes["Transaction"],
 > = {
-  buyer?: Resolver<Maybe<ResolversTypes["User"]>, ParentType, ContextType>;
-  buyerId?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
+  buyer?: Resolver<ResolversTypes["User"], ParentType, ContextType>;
   id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
-  product?: Resolver<Maybe<ResolversTypes["Product"]>, ParentType, ContextType>;
-  productId?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
+  product?: Resolver<ResolversTypes["Product"], ParentType, ContextType>;
   seller?: Resolver<Maybe<ResolversTypes["User"]>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
