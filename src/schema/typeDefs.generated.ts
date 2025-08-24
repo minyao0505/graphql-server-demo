@@ -72,6 +72,16 @@ export const typeDefs = {
           type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
           directives: [],
         },
+        {
+          kind: "FieldDefinition",
+          name: { kind: "Name", value: "users" },
+          arguments: [],
+          type: {
+            kind: "NamedType",
+            name: { kind: "Name", value: "UsersResponse" },
+          },
+          directives: [],
+        },
       ],
       directives: [],
       interfaces: [],
@@ -469,6 +479,30 @@ export const typeDefs = {
             type: {
               kind: "NamedType",
               name: { kind: "Name", value: "String" },
+            },
+          },
+          directives: [],
+        },
+      ],
+    },
+    {
+      kind: "ObjectTypeDefinition",
+      name: { kind: "Name", value: "UsersResponse" },
+      interfaces: [],
+      directives: [],
+      fields: [
+        {
+          kind: "FieldDefinition",
+          name: { kind: "Name", value: "result" },
+          arguments: [],
+          type: {
+            kind: "ListType",
+            type: {
+              kind: "NonNullType",
+              type: {
+                kind: "NamedType",
+                name: { kind: "Name", value: "User" },
+              },
             },
           },
           directives: [],

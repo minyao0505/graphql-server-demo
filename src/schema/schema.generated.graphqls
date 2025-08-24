@@ -41,6 +41,7 @@ type Query {
   getProduct(id: ID!): Product!
   getProducts(status: ProductStatus): GetProductsResponse
   user(id: ID!): User
+  users: UsersResponse
 }
 
 type Transaction {
@@ -56,4 +57,8 @@ type User {
   name: String!
   productPurchased: [Product!]
   productSold: [Product!]
+}
+
+type UsersResponse {
+  result: [User!]
 }
