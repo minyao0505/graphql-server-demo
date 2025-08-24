@@ -1,0 +1,72 @@
+### User ###
+type User {
+  id: ID!
+  name: String!
+  contact: String!
+}
+
+type GetUsersResponse {
+  result: [User!]
+}
+
+input CreateUserInput {
+  name: String!
+  contact: String!
+}
+
+extend type User {
+  productSold: [Product!]
+  productPurchased: [Product!]
+}
+
+### Product ###
+enum ProductStatus {
+  SOLD
+  AVAILABLE
+}
+
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+  seller: User!
+  buyer: User
+}
+
+type GetProductsResponse {
+  result: [Product!]
+}
+
+input CreateProductInput {
+  name: String!
+  price: Float!
+  sellerId: ID!
+}
+
+### Transaction ###
+type Transaction {
+  id: ID!
+  product: Product!
+  buyer: User!
+  seller: User
+}
+
+input CreateTransactionInput {
+  productId: ID!
+  buyerId: ID!
+}
+
+# Query
+type Query {
+  user(id: ID!): User
+  users: GetUsersResponse
+  getProduct(id: ID!): Product!
+  getProducts(status: ProductStatus): GetProductsResponse
+}
+
+# Mutation
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createProduct(input: CreateProductInput!): Product!
+  createTransaction(input: CreateTransactionInput!): Transaction!
+}

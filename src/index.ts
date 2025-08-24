@@ -1,18 +1,8 @@
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
 import { data } from "./data";
-
-const typeDefs = `
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello world!",
-  },
-};
+import { resolvers } from "./resolvers";
+import { typeDefs } from "./typeDefs";
 
 export type ResolverContext = {
   data: typeof data;
