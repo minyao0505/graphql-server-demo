@@ -56,7 +56,7 @@ input CreateTransactionInput {
   buyerId: ID!
 }
 
-# Query
+### Query ###
 type Query {
   user(id: ID!): User
   users: GetUsersResponse
@@ -64,7 +64,7 @@ type Query {
   getProducts(status: ProductStatus): GetProductsResponse
 }
 
-# Mutation
+### Mutation ###
 type Mutation {
   createUser(input: CreateUserInput!): User!
   createProduct(input: CreateProductInput!): Product!

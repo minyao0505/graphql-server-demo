@@ -1,9 +1,9 @@
-import type { ResolverContext } from ".";
+import type { ResolverContext } from "..";
 import type {
   DatabaseProduct,
   DatabaseTransaction,
   DatabaseUser,
-} from "./data";
+} from "../data";
 import type { IResolvers } from "@graphql-tools/utils";
 
 export type Resolver<Parent, Args, Result> = (

@@ -1,4 +1,4 @@
-import type { QueryResolvers } from "../../../types";
+import type { QueryResolvers } from "../../types";
 
 export const getProduct: NonNullable<QueryResolvers["getProduct"]> = async (
   _parent,

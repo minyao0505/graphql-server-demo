@@ -59,10 +59,7 @@ The GraphQL schema includes:
 
 ```graphql
 mutation {
-  createUser(input: {
-    name: "John Doe"
-    contact: "john@example.com"
-  }) {
+  createUser(input: { name: "John Doe", contact: "john@example.com" }) {
     id
     name
     contact
@@ -91,11 +88,7 @@ query {
 
 ```graphql
 mutation {
-  createProduct(input: {
-    name: "Laptop"
-    price: 999.99
-    sellerId: "1"
-  }) {
+  createProduct(input: { name: "Laptop", price: 999.99, sellerId: "1" }) {
     id
     name
     price
