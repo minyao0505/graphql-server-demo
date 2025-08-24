@@ -29,8 +29,7 @@ type Product {
   id: ID!
   name: String!
   price: Float!
-  seller: User
-  sellerId: ID!
+  seller: User!
 }
 
 enum ProductStatus {
@@ -45,11 +44,9 @@ type Query {
 }
 
 type Transaction {
-  buyer: User
-  buyerId: ID!
+  buyer: User!
   id: ID!
-  product: Product
-  productId: ID!
+  product: Product!
   seller: User
 }
 

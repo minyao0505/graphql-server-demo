@@ -1,4 +1,4 @@
-import type { Product, QueryResolvers } from "./../../../types.generated";
+import type { QueryResolvers } from "./../../../types.generated";
 
 export const getProduct: NonNullable<QueryResolvers["getProduct"]> = async (
   _parent,
@@ -6,7 +6,7 @@ export const getProduct: NonNullable<QueryResolvers["getProduct"]> = async (
   { data },
 ) => {
   /* Implement Query.getProduct resolver logic here */
-  const result: Product | null = await data.$products.findById({ id });
+  const result = await data.$products.findById({ id });
 
   if (!result) {
     throw new Error(`Product not found for product with id: ${id}`);

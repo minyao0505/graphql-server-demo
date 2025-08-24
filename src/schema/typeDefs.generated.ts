@@ -177,8 +177,10 @@ export const typeDefs = {
       ],
     },
     {
-      name: { kind: "Name", value: "Product" },
       kind: "ObjectTypeDefinition",
+      name: { kind: "Name", value: "Product" },
+      interfaces: [],
+      directives: [],
       fields: [
         {
           kind: "FieldDefinition",
@@ -215,19 +217,12 @@ export const typeDefs = {
         },
         {
           kind: "FieldDefinition",
-          name: { kind: "Name", value: "sellerId" },
+          name: { kind: "Name", value: "seller" },
           arguments: [],
           type: {
             kind: "NonNullType",
-            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
+            type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
           },
-          directives: [],
-        },
-        {
-          kind: "FieldDefinition",
-          name: { kind: "Name", value: "seller" },
-          arguments: [],
-          type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
           directives: [],
         },
         {
@@ -238,8 +233,6 @@ export const typeDefs = {
           directives: [],
         },
       ],
-      directives: [],
-      interfaces: [],
     },
     {
       kind: "ObjectTypeDefinition",
@@ -303,8 +296,10 @@ export const typeDefs = {
       ],
     },
     {
-      name: { kind: "Name", value: "Transaction" },
       kind: "ObjectTypeDefinition",
+      name: { kind: "Name", value: "Transaction" },
+      interfaces: [],
+      directives: [],
       fields: [
         {
           kind: "FieldDefinition",
@@ -318,36 +313,25 @@ export const typeDefs = {
         },
         {
           kind: "FieldDefinition",
-          name: { kind: "Name", value: "productId" },
-          arguments: [],
-          type: {
-            kind: "NonNullType",
-            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
-          },
-          directives: [],
-        },
-        {
-          kind: "FieldDefinition",
-          name: { kind: "Name", value: "buyerId" },
-          arguments: [],
-          type: {
-            kind: "NonNullType",
-            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
-          },
-          directives: [],
-        },
-        {
-          kind: "FieldDefinition",
           name: { kind: "Name", value: "product" },
           arguments: [],
-          type: { kind: "NamedType", name: { kind: "Name", value: "Product" } },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "Product" },
+            },
+          },
           directives: [],
         },
         {
           kind: "FieldDefinition",
           name: { kind: "Name", value: "buyer" },
           arguments: [],
-          type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
+          },
           directives: [],
         },
         {
@@ -358,8 +342,6 @@ export const typeDefs = {
           directives: [],
         },
       ],
-      directives: [],
-      interfaces: [],
     },
     {
       kind: "InputObjectTypeDefinition",

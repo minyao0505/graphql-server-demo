@@ -16,7 +16,8 @@ type Product {
   id: ID!
   name: String!
   price: Float!
-  sellerId: ID!
+  seller: User!
+  buyer: User
 }
 
 type GetProductsResponse {
@@ -27,9 +28,4 @@ input CreateProductInput {
   name: String!
   price: Float!
   sellerId: ID!
-}
-
-extend type Product {
-  seller: User
-  buyer: User
 }

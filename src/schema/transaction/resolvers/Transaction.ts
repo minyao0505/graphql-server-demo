@@ -1,13 +1,9 @@
-import type {
-  Product,
-  TransactionResolvers,
-  User,
-} from "./../../types.generated";
+import type { TransactionResolvers } from "./../../types.generated";
 
 export const Transaction: TransactionResolvers = {
   /* Implement Transaction resolver logic here */
   product: async (parent, __, { data }) => {
-    const product: Product | null = await data.$products.findById({
+    const product = await data.$products.findById({
       id: String(parent.productId),
     });
 
@@ -18,7 +14,7 @@ export const Transaction: TransactionResolvers = {
     return product;
   },
   buyer: async (parent, __, { data }) => {
-    const buyer: User | null = await data.$users.findById({
+    const buyer = await data.$users.findById({
       id: String(parent.buyerId),
     });
 
