@@ -1,4 +1,4 @@
-import type { MutationResolvers } from "../../../types";
+import type { MutationResolvers } from "../../types";
 
 export const createTransaction: NonNullable<
   MutationResolvers["createTransaction"]

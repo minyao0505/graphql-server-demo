@@ -1,8 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { data } from "./data";
-import { resolvers } from "./resolvers";
-import { typeDefs } from "./typeDefs";
+import { resolvers } from "./schema/resolvers";
+import { typeDefs } from "./schema/typeDefs";
 
 export type ResolverContext = {
   data: typeof data;
