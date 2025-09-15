@@ -8,8 +8,8 @@ extend type Mutation {
 }
 
 enum ProductStatus {
-  SOLD
-  AVAILABLE
+  ACTIVE
+  RESERVED
 }
 
 type Product {
@@ -17,6 +17,7 @@ type Product {
   name: String!
   price: Float!
   seller: User!
+  datePosted: DateTime!
   buyer: User
 }
 

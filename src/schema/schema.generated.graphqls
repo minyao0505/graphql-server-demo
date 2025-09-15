@@ -14,6 +14,8 @@ input CreateUserInput {
   name: String!
 }
 
+scalar DateTime
+
 type GetProductsResponse {
   result: [Product!]
 }
@@ -26,6 +28,7 @@ type Mutation {
 
 type Product {
   buyer: User
+  datePosted: DateTime!
   id: ID!
   name: String!
   price: Float!
@@ -33,8 +36,8 @@ type Product {
 }
 
 enum ProductStatus {
-  AVAILABLE
-  SOLD
+  ACTIVE
+  RESERVED
 }
 
 type Query {

@@ -11,6 +11,7 @@ import { GetProductsResponse } from "./product/resolvers/GetProductsResponse";
 import { Product } from "./product/resolvers/Product";
 import { Transaction } from "./transaction/resolvers/Transaction";
 import { User } from "./user/resolvers/User";
+import { DateTimeResolver } from "graphql-scalars";
 export const resolvers: Resolvers = {
   Query: {
     getProduct: Query_getProduct,
@@ -28,4 +29,5 @@ export const resolvers: Resolvers = {
   Product: Product,
   Transaction: Transaction,
   User: User,
+  DateTime: DateTimeResolver,
 };

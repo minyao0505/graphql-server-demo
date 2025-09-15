@@ -170,18 +170,23 @@ export const typeDefs = {
       interfaces: [],
     },
     {
+      kind: "ScalarTypeDefinition",
+      name: { kind: "Name", value: "DateTime" },
+      directives: [],
+    },
+    {
       kind: "EnumTypeDefinition",
       name: { kind: "Name", value: "ProductStatus" },
       directives: [],
       values: [
         {
           kind: "EnumValueDefinition",
-          name: { kind: "Name", value: "SOLD" },
+          name: { kind: "Name", value: "ACTIVE" },
           directives: [],
         },
         {
           kind: "EnumValueDefinition",
-          name: { kind: "Name", value: "AVAILABLE" },
+          name: { kind: "Name", value: "RESERVED" },
           directives: [],
         },
       ],
@@ -232,6 +237,19 @@ export const typeDefs = {
           type: {
             kind: "NonNullType",
             type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
+          },
+          directives: [],
+        },
+        {
+          kind: "FieldDefinition",
+          name: { kind: "Name", value: "datePosted" },
+          arguments: [],
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "DateTime" },
+            },
           },
           directives: [],
         },

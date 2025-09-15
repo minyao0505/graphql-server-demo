@@ -1,4 +1,8 @@
-import { GraphQLResolveInfo } from "graphql";
+import {
+  GraphQLResolveInfo,
+  GraphQLScalarType,
+  GraphQLScalarTypeConfig,
+} from "graphql";
 import { ProductMapper } from "./product/schema.mappers";
 import { TransactionMapper } from "./transaction/schema.mappers";
 import { UserMapper } from "./user/schema.mappers";
@@ -37,6 +41,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+  DateTime: { input: Date | string; output: Date | string };
 };
 
 export type CreateProductInput = {
@@ -82,13 +87,14 @@ export type MutationcreateUserArgs = {
 export type Product = {
   __typename?: "Product";
   buyer?: Maybe<User>;
+  datePosted: Scalars["DateTime"]["output"];
   id: Scalars["ID"]["output"];
   name: Scalars["String"]["output"];
   price: Scalars["Float"]["output"];
   seller: User;
 };
 
-export type ProductStatus = "AVAILABLE" | "SOLD";
+export type ProductStatus = "ACTIVE" | "RESERVED";
 
 export type Query = {
   __typename?: "Query";
@@ -245,6 +251,7 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
   CreateTransactionInput: CreateTransactionInput;
   CreateUserInput: CreateUserInput;
+  DateTime: ResolverTypeWrapper<Scalars["DateTime"]["output"]>;
   GetProductsResponse: ResolverTypeWrapper<
     Omit<GetProductsResponse, "result"> & {
       result?: Maybe<Array<ResolversTypes["Product"]>>;
@@ -252,7 +259,7 @@ export type ResolversTypes = {
   >;
   Mutation: ResolverTypeWrapper<{}>;
   Product: ResolverTypeWrapper<ProductMapper>;
-  ProductStatus: ResolverTypeWrapper<"SOLD" | "AVAILABLE">;
+  ProductStatus: ResolverTypeWrapper<"ACTIVE" | "RESERVED">;
   Query: ResolverTypeWrapper<{}>;
   Transaction: ResolverTypeWrapper<TransactionMapper>;
   User: ResolverTypeWrapper<UserMapper>;
@@ -272,6 +279,7 @@ export type ResolversParentTypes = {
   ID: Scalars["ID"]["output"];
   CreateTransactionInput: CreateTransactionInput;
   CreateUserInput: CreateUserInput;
+  DateTime: Scalars["DateTime"]["output"];
   GetProductsResponse: Omit<GetProductsResponse, "result"> & {
     result?: Maybe<Array<ResolversParentTypes["Product"]>>;
   };
@@ -285,6 +293,11 @@ export type ResolversParentTypes = {
   };
   Boolean: Scalars["Boolean"]["output"];
 };
+
+export interface DateTimeScalarConfig
+  extends GraphQLScalarTypeConfig<ResolversTypes["DateTime"], any> {
+  name: "DateTime";
+}
 
 export type GetProductsResponseResolvers<
   ContextType = ResolverContext,
@@ -330,6 +343,7 @@ export type ProductResolvers<
     ResolversParentTypes["Product"] = ResolversParentTypes["Product"],
 > = {
   buyer?: Resolver<Maybe<ResolversTypes["User"]>, ParentType, ContextType>;
+  datePosted?: Resolver<ResolversTypes["DateTime"], ParentType, ContextType>;
   id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
   name?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   price?: Resolver<ResolversTypes["Float"], ParentType, ContextType>;
@@ -338,7 +352,7 @@ export type ProductResolvers<
 };
 
 export type ProductStatusResolvers = EnumResolverSignature<
-  { AVAILABLE?: any; SOLD?: any },
+  { ACTIVE?: any; RESERVED?: any },
   ResolversTypes["ProductStatus"]
 >;
 
@@ -419,6 +433,7 @@ export type UsersResponseResolvers<
 };
 
 export type Resolvers<ContextType = ResolverContext> = {
+  DateTime?: GraphQLScalarType;
   GetProductsResponse?: GetProductsResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Product?: ProductResolvers<ContextType>;
