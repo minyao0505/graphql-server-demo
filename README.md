@@ -71,7 +71,7 @@ mutation {
 
 ```graphql
 query {
-  getProducts(status: AVAILABLE) {
+  getProducts(status: ACTIVE) {
     result {
       id
       name
