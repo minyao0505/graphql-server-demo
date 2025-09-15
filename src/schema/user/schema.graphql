@@ -1,0 +1,28 @@
+extend type Query {
+  user(id: ID!): User
+  users: UsersResponse
+}
+
+extend type Mutation {
+  createUser(input: CreateUserInput!): User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  contact: String!
+}
+
+input CreateUserInput {
+  name: String!
+  contact: String!
+}
+
+type UsersResponse {
+  result: [User!]
+}
+
+extend type User {
+  productSold: [Product!]
+  productPurchased: [Product!]
+}

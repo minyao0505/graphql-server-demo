@@ -1,0 +1,67 @@
+input CreateProductInput {
+  name: String!
+  price: Float!
+  sellerId: ID!
+}
+
+input CreateTransactionInput {
+  buyerId: ID!
+  productId: ID!
+}
+
+input CreateUserInput {
+  contact: String!
+  name: String!
+}
+
+scalar DateTime
+
+type GetProductsResponse {
+  result: [Product!]
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): Product!
+  createTransaction(input: CreateTransactionInput!): Transaction!
+  createUser(input: CreateUserInput!): User!
+}
+
+type Product {
+  buyer: User
+  datePosted: DateTime!
+  id: ID!
+  name: String!
+  price: Float!
+  seller: User!
+}
+
+enum ProductStatus {
+  ACTIVE
+  RESERVED
+}
+
+type Query {
+  getProduct(id: ID!): Product!
+  getProducts(status: ProductStatus): GetProductsResponse
+  user(id: ID!): User
+  users: UsersResponse
+}
+
+type Transaction {
+  buyer: User!
+  id: ID!
+  product: Product!
+  seller: User
+}
+
+type User {
+  contact: String!
+  id: ID!
+  name: String!
+  productPurchased: [Product!]
+  productSold: [Product!]
+}
+
+type UsersResponse {
+  result: [User!]
+}
