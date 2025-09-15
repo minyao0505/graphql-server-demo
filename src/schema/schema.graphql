@@ -1,3 +1,5 @@
+scalar Date
+
 ### User ###
 type User {
   id: ID!
@@ -21,8 +23,8 @@ extend type User {
 
 ### Product ###
 enum ProductStatus {
-  SOLD
-  AVAILABLE
+  ACTIVE
+  RESERVED
 }
 
 type Product {
@@ -30,6 +32,7 @@ type Product {
   name: String!
   price: Float!
   seller: User!
+  datePosted: Date!
   buyer: User
 }
 

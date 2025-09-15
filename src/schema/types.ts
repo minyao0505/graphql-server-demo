@@ -15,7 +15,7 @@ export type Resolver<Parent, Args, Result> = (
 interface QueryArgs {
   user: { id: string };
   getProduct: { id: string };
-  getProducts: { status?: "SOLD" | "AVAILABLE" };
+  getProducts: { status?: "RESERVED" | "ACTIVE" };
 }
 
 interface MutationArgs {
