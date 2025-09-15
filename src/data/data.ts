@@ -28,30 +28,35 @@ const products: DatabaseProduct[] = [
     name: "product1",
     price: 299.99,
     sellerId: "1",
+    datePosted: "2025-09-01T00:00:00.000Z",
   },
   {
     id: "2",
     name: "product2",
     price: 89.99,
     sellerId: "3",
+    datePosted: "2025-09-03T00:00:00.000Z",
   },
   {
     id: "3",
     name: "product3",
     price: 249.99,
     sellerId: "1",
+    datePosted: "2025-10-02T00:00:00.000Z",
   },
   {
     id: "4",
     name: "product4",
     price: 159.99,
     sellerId: "2",
+    datePosted: "2025-10-03T00:00:00.000Z",
   },
   {
     id: "5",
     name: "product5",
     price: 199.99,
     sellerId: "2",
+    datePosted: "2025-11-01T00:00:00.000Z",
   },
 ];
 
@@ -85,7 +90,7 @@ export const data: {
   $products: {
     findById: (params: { id: string }) => Promise<DatabaseProduct | null>;
     getAll: (params: {
-      status?: "SOLD" | "AVAILABLE";
+      status?: "RESERVED" | "ACTIVE";
     }) => Promise<DatabaseProduct[] | null>;
     createProduct: (params: {
       name: string;
@@ -130,16 +135,16 @@ export const data: {
         return null;
       }
 
-      const soldProductIds = new Set(
+      const reservedProductIds = new Set(
         transactions.map((tran) => tran.productId),
       );
 
       const filteredProducts = products.filter((product) => {
         switch (status) {
-          case "SOLD":
-            return soldProductIds.has(product.id);
-          case "AVAILABLE":
-            return !soldProductIds.has(product.id);
+          case "RESERVED":
+            return reservedProductIds.has(product.id);
+          case "ACTIVE":
+            return !reservedProductIds.has(product.id);
           default:
             return true;
         }
@@ -154,6 +159,7 @@ export const data: {
         name,
         price,
         sellerId,
+        datePosted: new Date().toISOString(),
       };
       products.push(product);
       return product;

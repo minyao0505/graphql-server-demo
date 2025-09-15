@@ -9,6 +9,7 @@ export interface DatabaseProduct {
   name: string;
   price: number;
   sellerId: string;
+  datePosted: string;
 }
 
 export interface DatabaseTransaction {

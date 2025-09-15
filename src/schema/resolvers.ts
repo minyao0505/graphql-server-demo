@@ -9,8 +9,10 @@ import { user } from "./user/resolvers/Query/user";
 import { users } from "./user/resolvers/Query/users";
 import { User } from "./user/resolvers/User";
 import type { Resolvers } from "./types";
+import { GraphQLDateTime } from "graphql-scalars";
 
 export const resolvers: Resolvers = {
+  Date: GraphQLDateTime,
   Query: {
     getProduct,
     getProducts,
