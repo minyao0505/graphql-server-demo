@@ -31,10 +31,11 @@ input CreateProductInput {
 }
 
 ### Transaction ###
-# Demo 2 - Transaction
 # Demo 3 - seller
 type Transaction {
-  random: ID!
+  id: ID!
+  product: Product!
+  buyer: User!
 }
 
 # Demo 2 - createTransactionInput

@@ -24,8 +24,8 @@ export const Transaction: TransactionResolvers = {
 
     return buyer;
   },
-  seller: async () => {
-    // Demo 3
-    return { id: "random", name: "random", contact: "random" };
-  },
+  // seller: async () => {
+  //   // Demo 3
+  //   return { id: "random", name: "random", contact: "random" };
+  // },
 };

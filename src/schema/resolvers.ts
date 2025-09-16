@@ -4,7 +4,7 @@
 // import { getProducts } from "./product/resolvers/Query/getProducts";
 // import { createTransaction } from "./transaction/resolvers/Mutation/createTransaction";
 import { getTransactions } from "./transaction/resolvers/Query/getTransactions";
-// import { Transaction } from "./transaction/resolvers/Transaction";
+import { Transaction } from "./transaction/resolvers/Transaction";
 import { user } from "./user/resolvers/Query/user";
 // import { users } from "./user/resolvers/Query/users";
 // import { User } from "./user/resolvers/User";
@@ -25,6 +25,6 @@ export const resolvers: Resolvers = {
     // createTransaction,
   },
   // Product,
-  // Transaction,
+  Transaction,
   // User,
 };

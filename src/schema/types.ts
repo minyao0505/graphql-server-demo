@@ -85,11 +85,11 @@ export interface TransactionResolvers {
     DatabaseProduct
   >;
   buyer: Resolver<DatabaseTransaction, Record<string, never>, DatabaseUser>;
-  seller: Resolver<
-    DatabaseTransaction,
-    Record<string, never>,
-    DatabaseUser | null
-  >;
+  // seller: Resolver<
+  //   DatabaseTransaction,
+  //   Record<string, never>,
+  //   DatabaseUser | null
+  // >;
 }
 
 export interface Resolvers extends IResolvers<unknown, ResolverContext> {
@@ -97,5 +97,5 @@ export interface Resolvers extends IResolvers<unknown, ResolverContext> {
   Mutation: MutationResolvers;
   // Product: ProductResolvers;
   // User: UserResolvers;
-  // Transaction: TransactionResolvers;
+  Transaction: TransactionResolvers;
 }
