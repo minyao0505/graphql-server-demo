@@ -7,5 +7,5 @@ export const users: NonNullable<QueryResolvers["users"]> = async (
   /* Implement Query.users resolver logic here */
   const result = await data.$users.getAll();
 
-  return { result };
+  return result;
 };

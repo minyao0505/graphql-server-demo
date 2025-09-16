@@ -1,6 +1,6 @@
 extend type Query {
   getProduct(id: ID!): Product!
-  getProducts(status: ProductStatus): GetProductsResponse
+  getProducts(status: ProductStatus): [Product!]
 }
 
 extend type Mutation {
@@ -19,10 +19,6 @@ type Product {
   seller: User!
   datePosted: DateTime!
   buyer: User
-}
-
-type GetProductsResponse {
-  result: [Product!]
 }
 
 input CreateProductInput {

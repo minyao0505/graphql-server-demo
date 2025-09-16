@@ -47,8 +47,14 @@ export const typeDefs = {
             },
           ],
           type: {
-            kind: "NamedType",
-            name: { kind: "Name", value: "GetProductsResponse" },
+            kind: "ListType",
+            type: {
+              kind: "NonNullType",
+              type: {
+                kind: "NamedType",
+                name: { kind: "Name", value: "Product" },
+              },
+            },
           },
           directives: [],
         },
@@ -77,8 +83,14 @@ export const typeDefs = {
           name: { kind: "Name", value: "users" },
           arguments: [],
           type: {
-            kind: "NamedType",
-            name: { kind: "Name", value: "UsersResponse" },
+            kind: "ListType",
+            type: {
+              kind: "NonNullType",
+              type: {
+                kind: "NamedType",
+                name: { kind: "Name", value: "User" },
+              },
+            },
           },
           directives: [],
         },
@@ -235,30 +247,6 @@ export const typeDefs = {
           name: { kind: "Name", value: "buyer" },
           arguments: [],
           type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
-          directives: [],
-        },
-      ],
-    },
-    {
-      kind: "ObjectTypeDefinition",
-      name: { kind: "Name", value: "GetProductsResponse" },
-      interfaces: [],
-      directives: [],
-      fields: [
-        {
-          kind: "FieldDefinition",
-          name: { kind: "Name", value: "result" },
-          arguments: [],
-          type: {
-            kind: "ListType",
-            type: {
-              kind: "NonNullType",
-              type: {
-                kind: "NamedType",
-                name: { kind: "Name", value: "Product" },
-              },
-            },
-          },
           directives: [],
         },
       ],
@@ -448,30 +436,6 @@ export const typeDefs = {
       ],
       directives: [],
       interfaces: [],
-    },
-    {
-      kind: "ObjectTypeDefinition",
-      name: { kind: "Name", value: "UsersResponse" },
-      interfaces: [],
-      directives: [],
-      fields: [
-        {
-          kind: "FieldDefinition",
-          name: { kind: "Name", value: "result" },
-          arguments: [],
-          type: {
-            kind: "ListType",
-            type: {
-              kind: "NonNullType",
-              type: {
-                kind: "NamedType",
-                name: { kind: "Name", value: "User" },
-              },
-            },
-          },
-          directives: [],
-        },
-      ],
     },
     {
       kind: "SchemaDefinition",

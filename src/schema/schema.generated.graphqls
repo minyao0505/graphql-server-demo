@@ -11,10 +11,6 @@ input CreateTransactionInput {
 
 scalar DateTime
 
-type GetProductsResponse {
-  result: [Product!]
-}
-
 type Mutation {
   createProduct(input: CreateProductInput!): Product!
   createTransaction(input: CreateTransactionInput!): Transaction!
@@ -36,9 +32,9 @@ enum ProductStatus {
 
 type Query {
   getProduct(id: ID!): Product!
-  getProducts(status: ProductStatus): GetProductsResponse
+  getProducts(status: ProductStatus): [Product!]
   user(id: ID!): User
-  users: UsersResponse
+  users: [User!]
 }
 
 type Transaction {
@@ -54,8 +50,4 @@ type User {
   name: String!
   productPurchased: [Product!]
   productSold: [Product!]
-}
-
-type UsersResponse {
-  result: [User!]
 }

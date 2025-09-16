@@ -1,16 +1,12 @@
 extend type Query {
   user(id: ID!): User
-  users: UsersResponse
+  users: [User!]
 }
 
 type User {
   id: ID!
   name: String!
   contact: String!
-}
-
-type UsersResponse {
-  result: [User!]
 }
 
 extend type User {

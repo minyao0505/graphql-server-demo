@@ -27,7 +27,6 @@ export type Incremental<T> =
   | {
       [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
     };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
   [P in K]-?: NonNullable<T[P]>;
 };
@@ -53,11 +52,6 @@ export type CreateProductInput = {
 export type CreateTransactionInput = {
   buyerId: Scalars["ID"]["input"];
   productId: Scalars["ID"]["input"];
-};
-
-export type GetProductsResponse = {
-  __typename?: "GetProductsResponse";
-  result?: Maybe<Array<Product>>;
 };
 
 export type Mutation = {
@@ -89,9 +83,9 @@ export type ProductStatus = "ACTIVE" | "RESERVED";
 export type Query = {
   __typename?: "Query";
   getProduct: Product;
-  getProducts?: Maybe<GetProductsResponse>;
+  getProducts?: Maybe<Array<Product>>;
   user?: Maybe<User>;
-  users?: Maybe<UsersResponse>;
+  users?: Maybe<Array<User>>;
 };
 
 export type QuerygetProductArgs = {
@@ -121,11 +115,6 @@ export type User = {
   name: Scalars["String"]["output"];
   productPurchased?: Maybe<Array<Product>>;
   productSold?: Maybe<Array<Product>>;
-};
-
-export type UsersResponse = {
-  __typename?: "UsersResponse";
-  result?: Maybe<Array<User>>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -241,22 +230,12 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
   CreateTransactionInput: CreateTransactionInput;
   DateTime: ResolverTypeWrapper<Scalars["DateTime"]["output"]>;
-  GetProductsResponse: ResolverTypeWrapper<
-    Omit<GetProductsResponse, "result"> & {
-      result?: Maybe<Array<ResolversTypes["Product"]>>;
-    }
-  >;
   Mutation: ResolverTypeWrapper<{}>;
   Product: ResolverTypeWrapper<ProductMapper>;
   ProductStatus: ResolverTypeWrapper<"ACTIVE" | "RESERVED">;
   Query: ResolverTypeWrapper<{}>;
   Transaction: ResolverTypeWrapper<TransactionMapper>;
   User: ResolverTypeWrapper<UserMapper>;
-  UsersResponse: ResolverTypeWrapper<
-    Omit<UsersResponse, "result"> & {
-      result?: Maybe<Array<ResolversTypes["User"]>>;
-    }
-  >;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
 };
 
@@ -268,17 +247,11 @@ export type ResolversParentTypes = {
   ID: Scalars["ID"]["output"];
   CreateTransactionInput: CreateTransactionInput;
   DateTime: Scalars["DateTime"]["output"];
-  GetProductsResponse: Omit<GetProductsResponse, "result"> & {
-    result?: Maybe<Array<ResolversParentTypes["Product"]>>;
-  };
   Mutation: {};
   Product: ProductMapper;
   Query: {};
   Transaction: TransactionMapper;
   User: UserMapper;
-  UsersResponse: Omit<UsersResponse, "result"> & {
-    result?: Maybe<Array<ResolversParentTypes["User"]>>;
-  };
   Boolean: Scalars["Boolean"]["output"];
 };
 
@@ -286,19 +259,6 @@ export interface DateTimeScalarConfig
   extends GraphQLScalarTypeConfig<ResolversTypes["DateTime"], any> {
   name: "DateTime";
 }
-
-export type GetProductsResponseResolvers<
-  ContextType = ResolverContext,
-  ParentType extends
-    ResolversParentTypes["GetProductsResponse"] = ResolversParentTypes["GetProductsResponse"],
-> = {
-  result?: Resolver<
-    Maybe<Array<ResolversTypes["Product"]>>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
 
 export type MutationResolvers<
   ContextType = ResolverContext,
@@ -350,7 +310,7 @@ export type QueryResolvers<
     RequireFields<QuerygetProductArgs, "id">
   >;
   getProducts?: Resolver<
-    Maybe<ResolversTypes["GetProductsResponse"]>,
+    Maybe<Array<ResolversTypes["Product"]>>,
     ParentType,
     ContextType,
     Partial<QuerygetProductsArgs>
@@ -362,7 +322,7 @@ export type QueryResolvers<
     RequireFields<QueryuserArgs, "id">
   >;
   users?: Resolver<
-    Maybe<ResolversTypes["UsersResponse"]>,
+    Maybe<Array<ResolversTypes["User"]>>,
     ParentType,
     ContextType
   >;
@@ -401,27 +361,12 @@ export type UserResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type UsersResponseResolvers<
-  ContextType = ResolverContext,
-  ParentType extends
-    ResolversParentTypes["UsersResponse"] = ResolversParentTypes["UsersResponse"],
-> = {
-  result?: Resolver<
-    Maybe<Array<ResolversTypes["User"]>>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
 export type Resolvers<ContextType = ResolverContext> = {
   DateTime?: GraphQLScalarType;
-  GetProductsResponse?: GetProductsResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Product?: ProductResolvers<ContextType>;
   ProductStatus?: ProductStatusResolvers;
   Query?: QueryResolvers<ContextType>;
   Transaction?: TransactionResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
-  UsersResponse?: UsersResponseResolvers<ContextType>;
 };
