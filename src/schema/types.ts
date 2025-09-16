@@ -25,35 +25,39 @@ interface MutationArgs {
 
 export interface QueryResolvers {
   user: Resolver<Record<string, never>, QueryArgs["user"], DatabaseUser | null>;
-  users: Resolver<Record<string, never>, Record<string, never>, DatabaseUser[]>;
-  getProduct: Resolver<
-    Record<string, never>,
-    QueryArgs["getProduct"],
-    DatabaseProduct
-  >;
-  getProducts: Resolver<
-    Record<string, never>,
-    QueryArgs["getProducts"],
-    DatabaseProduct[]
-  >;
+  // users: Resolver<
+  //   Record<string, never>,
+  //   Record<string, never>,
+  //   { result: DatabaseUser[] }
+  // >;
+  // getProduct: Resolver<
+  //   Record<string, never>,
+  //   QueryArgs["getProduct"],
+  //   DatabaseProduct
+  // >;
+  // getProducts: Resolver<
+  //   Record<string, never>,
+  //   QueryArgs["getProducts"],
+  //   { result: DatabaseProduct[] }
+  // >;
   getTransactions: Resolver<
     Record<string, never>,
     Record<string, never>,
-    DatabaseTransaction[]
+    { result: DatabaseTransaction[] }
   >;
 }
 
 export interface MutationResolvers {
-  createProduct: Resolver<
-    Record<string, never>,
-    MutationArgs["createProduct"],
-    DatabaseProduct
-  >;
-  createTransaction: Resolver<
-    Record<string, never>,
-    MutationArgs["createTransaction"],
-    DatabaseTransaction
-  >;
+  // createProduct: Resolver<
+  //   Record<string, never>,
+  //   MutationArgs["createProduct"],
+  //   DatabaseProduct
+  // >;
+  // createTransaction: Resolver<
+  //   Record<string, never>,
+  //   MutationArgs["createTransaction"],
+  //   DatabaseTransaction
+  // >;
 }
 
 export interface ProductResolvers {
@@ -91,7 +95,7 @@ export interface TransactionResolvers {
 export interface Resolvers extends IResolvers<unknown, ResolverContext> {
   Query: QueryResolvers;
   Mutation: MutationResolvers;
-  Product: ProductResolvers;
-  User: UserResolvers;
-  Transaction: TransactionResolvers;
+  // Product: ProductResolvers;
+  // User: UserResolvers;
+  // Transaction: TransactionResolvers;
 }

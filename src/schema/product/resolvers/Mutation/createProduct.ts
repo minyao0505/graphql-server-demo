@@ -5,5 +5,11 @@ export const createProduct: NonNullable<
 > = async (_parent, _agrs, _context) => {
   // TODO - Exercise 3 - create a resolver for create a new product
 
-  return { id: "random", name: "random", price: 0, sellerId: "randoms" };
+  return {
+    id: "random",
+    name: "random",
+    price: 0,
+    sellerId: "random",
+    datePosted: "random",
+  };
 };

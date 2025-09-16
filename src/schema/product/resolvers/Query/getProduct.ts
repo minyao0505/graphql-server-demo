@@ -7,5 +7,11 @@ export const getProduct: NonNullable<QueryResolvers["getProduct"]> = async (
 ) => {
   // TODO - Extra exercise - create a resolver to get the product based on argument
 
-  return { id: "random", name: "random", price: 0, sellerId: "randoms" };
+  return {
+    id: "random",
+    name: "random",
+    price: 0,
+    sellerId: "random",
+    datePosted: "random",
+  };
 };

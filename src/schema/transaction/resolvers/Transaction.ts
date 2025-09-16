@@ -24,23 +24,8 @@ export const Transaction: TransactionResolvers = {
 
     return buyer;
   },
-  seller: async (parent, __, { data }) => {
-    const product = await data.$products.findById({
-      id: String(parent.productId),
-    });
-
-    if (!product) {
-      return null;
-    }
-
-    const seller = await data.$users.findById({ id: product.sellerId });
-
-    if (!seller) {
-      throw new Error(
-        `Seller not found for product with id: ${parent.productId}`,
-      );
-    }
-
-    return seller;
+  seller: async () => {
+    // Demo 3
+    return { id: "random", name: "random", contact: "random" };
   },
 };

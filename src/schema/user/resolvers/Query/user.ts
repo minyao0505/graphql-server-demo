@@ -5,6 +5,6 @@ export const user: NonNullable<QueryResolvers["user"]> = async (
   _agrs,
   _context,
 ) => {
-  // Demo
+  // Demo 1
   return { id: "random", name: "random", contact: "random" };
 };
