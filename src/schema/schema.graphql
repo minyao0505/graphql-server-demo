@@ -4,8 +4,9 @@ scalar Date
 
 # Demo 1 - user
 type User {
-  random: String!
   # TODO - Exercise 1 - Add a contact field for the user
+  id: ID!
+  name: String!
 }
 
 extend type User {

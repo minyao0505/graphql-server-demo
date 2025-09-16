@@ -43,7 +43,7 @@ export interface QueryResolvers {
   getTransactions: Resolver<
     Record<string, never>,
     Record<string, never>,
-    { result: DatabaseTransaction[] }
+    DatabaseTransaction[]
   >;
 }
 
