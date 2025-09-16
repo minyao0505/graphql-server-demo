@@ -19,18 +19,13 @@ interface QueryArgs {
 }
 
 interface MutationArgs {
-  createUser: { input: { name: string; contact: string } };
   createProduct: { input: { name: string; price: number; sellerId: string } };
   createTransaction: { input: { productId: string; buyerId: string } };
 }
 
 export interface QueryResolvers {
   user: Resolver<Record<string, never>, QueryArgs["user"], DatabaseUser | null>;
-  users: Resolver<
-    Record<string, never>,
-    Record<string, never>,
-    { result: DatabaseUser[] }
-  >;
+  users: Resolver<Record<string, never>, Record<string, never>, DatabaseUser[]>;
   getProduct: Resolver<
     Record<string, never>,
     QueryArgs["getProduct"],
@@ -39,16 +34,16 @@ export interface QueryResolvers {
   getProducts: Resolver<
     Record<string, never>,
     QueryArgs["getProducts"],
-    { result: DatabaseProduct[] }
+    DatabaseProduct[]
+  >;
+  getTransactions: Resolver<
+    Record<string, never>,
+    Record<string, never>,
+    DatabaseTransaction[]
   >;
 }
 
 export interface MutationResolvers {
-  createUser: Resolver<
-    Record<string, never>,
-    MutationArgs["createUser"],
-    DatabaseUser
-  >;
   createProduct: Resolver<
     Record<string, never>,
     MutationArgs["createProduct"],

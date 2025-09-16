@@ -13,5 +13,5 @@ export const getProducts: NonNullable<QueryResolvers["getProducts"]> = async (
     throw new Error("No products available");
   }
 
-  return { result };
+  return result;
 };

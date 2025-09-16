@@ -82,10 +82,6 @@ export const data: {
   $users: {
     findById: (params: { id: string }) => Promise<DatabaseUser | null>;
     getAll: () => Promise<DatabaseUser[]>;
-    createUser: (params: {
-      name: string;
-      contact: string;
-    }) => Promise<DatabaseUser>;
   };
   $products: {
     findById: (params: { id: string }) => Promise<DatabaseProduct | null>;
@@ -102,6 +98,7 @@ export const data: {
   };
   $transactions: {
     findById: (params: { id: string }) => Promise<DatabaseTransaction | null>;
+    getAll: () => Promise<DatabaseTransaction[] | null>;
     createTransaction: (params: {
       productId: string;
       buyerId: string;
@@ -114,16 +111,6 @@ export const data: {
     },
     getAll: async () => {
       return users;
-    },
-    createUser: async ({ name, contact }) => {
-      const id = String(Object.keys(users).length + 1);
-      const user: DatabaseUser = {
-        id,
-        name,
-        contact,
-      };
-      users.push(user);
-      return user;
     },
   },
   $products: {
@@ -181,6 +168,13 @@ export const data: {
   $transactions: {
     findById: async ({ id }) => {
       return transactions.find((tran) => tran.productId === id) || null;
+    },
+    getAll: async () => {
+      if (!transactions) {
+        return null;
+      }
+
+      return transactions;
     },
     createTransaction: async ({ productId, buyerId }) => {
       const productIndex = products.findIndex(

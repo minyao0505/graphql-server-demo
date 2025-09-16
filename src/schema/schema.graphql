@@ -7,15 +7,6 @@ type User {
   contact: String!
 }
 
-type GetUsersResponse {
-  result: [User!]
-}
-
-input CreateUserInput {
-  name: String!
-  contact: String!
-}
-
 extend type User {
   productSold: [Product!]
   productPurchased: [Product!]
@@ -34,10 +25,6 @@ type Product {
   seller: User!
   datePosted: Date!
   buyer: User
-}
-
-type GetProductsResponse {
-  result: [Product!]
 }
 
 input CreateProductInput {
@@ -62,14 +49,14 @@ input CreateTransactionInput {
 ### Query ###
 type Query {
   user(id: ID!): User
-  users: GetUsersResponse
-  getProduct(id: ID!): Product!
-  getProducts(status: ProductStatus): GetProductsResponse
+  users: [User!]
+  getProduct(id: ID!): Product
+  getProducts(status: ProductStatus): [Product!]
+  getTransactions: [Transaction!]
 }
 
 ### Mutation ###
 type Mutation {
-  createUser(input: CreateUserInput!): User!
   createProduct(input: CreateProductInput!): Product!
   createTransaction(input: CreateTransactionInput!): Transaction!
 }
