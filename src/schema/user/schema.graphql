@@ -3,17 +3,8 @@ extend type Query {
   users: UsersResponse
 }
 
-extend type Mutation {
-  createUser(input: CreateUserInput!): User!
-}
-
 type User {
   id: ID!
-  name: String!
-  contact: String!
-}
-
-input CreateUserInput {
   name: String!
   contact: String!
 }

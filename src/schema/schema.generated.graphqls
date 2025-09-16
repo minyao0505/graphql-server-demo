@@ -9,11 +9,6 @@ input CreateTransactionInput {
   productId: ID!
 }
 
-input CreateUserInput {
-  contact: String!
-  name: String!
-}
-
 scalar DateTime
 
 type GetProductsResponse {
@@ -23,7 +18,6 @@ type GetProductsResponse {
 type Mutation {
   createProduct(input: CreateProductInput!): Product!
   createTransaction(input: CreateTransactionInput!): Transaction!
-  createUser(input: CreateUserInput!): User!
 }
 
 type Product {

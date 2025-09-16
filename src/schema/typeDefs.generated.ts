@@ -142,29 +142,6 @@ export const typeDefs = {
           },
           directives: [],
         },
-        {
-          kind: "FieldDefinition",
-          name: { kind: "Name", value: "createUser" },
-          arguments: [
-            {
-              kind: "InputValueDefinition",
-              name: { kind: "Name", value: "input" },
-              type: {
-                kind: "NonNullType",
-                type: {
-                  kind: "NamedType",
-                  name: { kind: "Name", value: "CreateUserInput" },
-                },
-              },
-              directives: [],
-            },
-          ],
-          type: {
-            kind: "NonNullType",
-            type: { kind: "NamedType", name: { kind: "Name", value: "User" } },
-          },
-          directives: [],
-        },
       ],
       directives: [],
       interfaces: [],
@@ -471,37 +448,6 @@ export const typeDefs = {
       ],
       directives: [],
       interfaces: [],
-    },
-    {
-      kind: "InputObjectTypeDefinition",
-      name: { kind: "Name", value: "CreateUserInput" },
-      directives: [],
-      fields: [
-        {
-          kind: "InputValueDefinition",
-          name: { kind: "Name", value: "name" },
-          type: {
-            kind: "NonNullType",
-            type: {
-              kind: "NamedType",
-              name: { kind: "Name", value: "String" },
-            },
-          },
-          directives: [],
-        },
-        {
-          kind: "InputValueDefinition",
-          name: { kind: "Name", value: "contact" },
-          type: {
-            kind: "NonNullType",
-            type: {
-              kind: "NamedType",
-              name: { kind: "Name", value: "String" },
-            },
-          },
-          directives: [],
-        },
-      ],
     },
     {
       kind: "ObjectTypeDefinition",

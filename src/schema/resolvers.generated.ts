@@ -6,7 +6,6 @@ import { user as Query_user } from "./user/resolvers/Query/user";
 import { users as Query_users } from "./user/resolvers/Query/users";
 import { createProduct as Mutation_createProduct } from "./product/resolvers/Mutation/createProduct";
 import { createTransaction as Mutation_createTransaction } from "./transaction/resolvers/Mutation/createTransaction";
-import { createUser as Mutation_createUser } from "./user/resolvers/Mutation/createUser";
 import { GetProductsResponse } from "./product/resolvers/GetProductsResponse";
 import { Product } from "./product/resolvers/Product";
 import { Transaction } from "./transaction/resolvers/Transaction";
@@ -22,7 +21,6 @@ export const resolvers: Resolvers = {
   Mutation: {
     createProduct: Mutation_createProduct,
     createTransaction: Mutation_createTransaction,
-    createUser: Mutation_createUser,
   },
 
   GetProductsResponse: GetProductsResponse,
