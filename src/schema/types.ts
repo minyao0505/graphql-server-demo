@@ -28,7 +28,7 @@ export interface QueryResolvers {
   // users: Resolver<
   //   Record<string, never>,
   //   Record<string, never>,
-  //   { result: DatabaseUser[] }
+  //   DatabaseUser[]
   // >;
   // getProduct: Resolver<
   //   Record<string, never>,
@@ -38,7 +38,7 @@ export interface QueryResolvers {
   // getProducts: Resolver<
   //   Record<string, never>,
   //   QueryArgs["getProducts"],
-  //   { result: DatabaseProduct[] }
+  //   DatabaseProduct[]
   // >;
   getTransactions: Resolver<
     Record<string, never>,

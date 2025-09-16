@@ -44,7 +44,6 @@ type Transaction {
 type Query {
   user(id: ID!): User!
   # Demo 1: users
-  # TODO: Exercise 1: create a users query that return a list of users
   # TODO: Exercise 2: create a getProducts query that return a list of products
   # TODO: Extra exercise - create a getProduct query that take id as argument and return the product
   getTransactions: [Transaction!]
